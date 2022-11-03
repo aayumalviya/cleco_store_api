@@ -1,0 +1,2 @@
+class ProductMedium < ApplicationRecord
+end
