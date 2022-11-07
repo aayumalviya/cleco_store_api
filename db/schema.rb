@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_03_121804) do
+ActiveRecord::Schema.define(version: 2022_11_04_051004) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -96,6 +99,7 @@ ActiveRecord::Schema.define(version: 2022_11_03_121804) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "category_id"
     t.boolean "is_published", default: false
+    t.integer "sub_category_id"
   end
 
   create_table "sub_categories", force: :cascade do |t|

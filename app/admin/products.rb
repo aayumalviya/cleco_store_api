@@ -5,7 +5,7 @@ ActiveAdmin.register Product do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-   permit_params :title, :product_description, :price, :old_price, :exclusive_price, :image, :product_details, :category_id, :is_published
+   permit_params :title, :product_description, :price, :old_price, :exclusive_price, :image, :product_details, :category_id, :is_published, :sub_category_id
   #
   # or
   #
@@ -31,13 +31,13 @@ ActiveAdmin.register Product do
       row :title
       row :price
       row :old_price
-      row :old_price
-      row :exclusive_price
+      # row :old_price
+      # row :exclusive_price
       row :product_description
       row :product_details
-      row :image do |product|
-        image_tag url_for(product.image), height: 200, width: 200
-      end
+      # row :image do |product|
+      #   image_tag url_for(product.image), height: 200, width: 200
+      # end
     end
   end
 
@@ -46,15 +46,15 @@ ActiveAdmin.register Product do
     f.inputs do
       f.input :title
       f.input :price
-      f.input :old_price
-      f.input :exclusive_price
-      f.input :image, as: :file
-      f.input :category_id
-      f.input :product_details, :as => :ckeditor
-      f.input :product_description, :as => :ckeditor
+      # f.input :old_price
+      # f.input :exclusive_price
+      # f.input :image, as: :file
+      f.input :category_id, :as => :select, :collection => Category.all.collect {|r| [r.name, r.id] }, include_blank: false
+      f.input :sub_category_id, :as => :select, :collection => SubCategory.all.collect {|r| [r.name, r.id] }, include_blank: false
+      f.input :product_details
+      f.input :product_description
       f.input :is_published
     end
     f.actions
   end
-  
 end
