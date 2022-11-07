@@ -26,17 +26,17 @@ ActiveAdmin.register Category do
   show do
     attributes_table do
     row :name
-    row :sub_categories
-    # row :logo do |category|
-    #   image_tag url_for(category.logo), height: 200, width: 200
-    # end
+    # row :sub_categories
+    row :logo do |category|
+      image_tag url_for(category.logo), height: 200, width: 200
+    end
   end
   end
 
   form do |f|
     f.inputs do
       f.input :name
-      # f.input :logo, as: :file
+      f.input :logo, as: :file
     end
     f.actions
   end

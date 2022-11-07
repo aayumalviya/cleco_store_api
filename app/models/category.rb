@@ -1,4 +1,5 @@
 class Category < ApplicationRecord
-    # has_one_attached :logo, dependent: :destroy
+    include Rails.application.routes.url_helpers
+    has_one_attached :logo
     has_many :sub_categories, dependent: :destroy
 end

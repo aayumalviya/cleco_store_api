@@ -1,5 +1,5 @@
 class Product < ApplicationRecord
-    # has_one_attached :image
+    has_one_attached :image
     after_create :old_price_count
     after_create :exclusive_price_count
     belongs_to :category

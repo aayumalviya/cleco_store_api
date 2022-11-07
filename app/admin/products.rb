@@ -31,13 +31,13 @@ ActiveAdmin.register Product do
       row :title
       row :price
       row :old_price
-      # row :old_price
-      # row :exclusive_price
+      row :old_price
+      row :exclusive_price
       row :product_description
       row :product_details
-      # row :image do |product|
-      #   image_tag url_for(product.image), height: 200, width: 200
-      # end
+      row :image do |product|
+        image_tag url_for(product.image), height: 200, width: 200
+      end
     end
   end
 
@@ -48,7 +48,7 @@ ActiveAdmin.register Product do
       f.input :price
       # f.input :old_price
       # f.input :exclusive_price
-      # f.input :image, as: :file
+       f.input :image, as: :file
       f.input :category_id, :as => :select, :collection => Category.all.collect {|r| [r.name, r.id] }, include_blank: false
       f.input :sub_category_id, :as => :select, :collection => SubCategory.all.collect {|r| [r.name, r.id] }, include_blank: false
       f.input :product_details

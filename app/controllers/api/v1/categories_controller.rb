@@ -1,5 +1,8 @@
 class Api::V1::CategoriesController < ApplicationController
     protect_from_forgery with: :null_session
+    # before_action do
+    #     ActiveStorage::Current.host = request.base_url
+    # end
 
     def index
         @categories = Category.all
@@ -11,15 +14,8 @@ class Api::V1::CategoriesController < ApplicationController
         }
     end
 
-    # def get_user_type(user)
-    #   type = @user.roles.pluck(:name).to_sentence
-    #     user.as_json.merge({
-    #       user_type: type.to_sentence,
-    #     })
-    # end
-
     private
     def category_params
-        params.require(:category).permit(:name)
+        params.require(:category).permit(:name, :logo)
     end
 end
