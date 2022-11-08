@@ -29,7 +29,7 @@ ActiveAdmin.register SubCategory do
     attributes_table do
       row :name
       row :logo do |category|
-        image_tag url_for(category.logo), height: 200, width: 200
+        image_tag url_for(category.logo), height: 200, width: 200 if category.logo.attached?
       end
     end
   end

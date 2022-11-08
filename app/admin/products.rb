@@ -36,7 +36,7 @@ ActiveAdmin.register Product do
       row :product_description
       row :product_details
       row :image do |product|
-        image_tag url_for(product.image), height: 200, width: 200
+        image_tag url_for(product.image), height: 200, width: 200 if product.image.attached?
       end
     end
   end
