@@ -23,6 +23,8 @@ ActiveAdmin.register Product do
     column :image
     column :old_price
     column :exclusive_price
+    column :category
+    column :sub_category
     actions
   end
 

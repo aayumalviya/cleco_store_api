@@ -61,4 +61,5 @@ gem 'cancancan'
 gem 'draper'
 gem 'pundit'
 gem 'active_model_serializers'
-gem "aws-sdk-s3", require: false
+# gem "aws-sdk-s3", require: false
+gem 'will_paginate', '~> 3.3'

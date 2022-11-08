@@ -10,7 +10,9 @@ Rails.application.routes.draw do
       resources :categories
       resources :sub_categories
       resources :products
+      #  do 
+      # end 
+   get 'filter', to: 'products#filter_products'
     end
   end
-
 end
