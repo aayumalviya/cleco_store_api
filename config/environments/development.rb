@@ -74,9 +74,8 @@ Rails.application.configure do
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
 
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
-  Rails.application.routes.default_url_options[:host] = 'localhost'
-
+  config.action_mailer.default_url_options = { host: 'cleco-store.herokuapp', port: 3000 }
+  Rails.application.routes.default_url_options[:host] = 'cleco-store.herokuapp'
   Rails.application.config_for(:storage)
 
 end

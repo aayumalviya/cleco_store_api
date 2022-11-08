@@ -48,8 +48,8 @@ ActiveAdmin.register Product do
       f.input :price
       # f.input :old_price
       # f.input :exclusive_price
-       f.input :image, as: :file
-      f.input :category_id, :as => :select, :collection => Category.all.collect {|r| [r.name, r.id] }, include_blank: false
+      f.input :image, as: :file
+      f.input :sub_category.category_id, :as => :select, :collection => Category.all.collect {|r| [r.name, r.id] }, include_blank: false
       f.input :sub_category_id, :as => :select, :collection => SubCategory.all.collect {|r| [r.name, r.id] }, include_blank: false
       f.input :product_details
       f.input :product_description

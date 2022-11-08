@@ -61,3 +61,4 @@ gem 'cancancan'
 gem 'draper'
 gem 'pundit'
 gem 'active_model_serializers'
+gem "aws-sdk-s3", require: false
