@@ -4,6 +4,6 @@ class SubCategorySerializer < ActiveModel::Serializer
   attributes :id, :name, :logo
 
   def logo
-    rails_blob_path(object.logo) if object.logo.attachment
+    url_for(object.logo) if object.logo.attachment
   end
 end

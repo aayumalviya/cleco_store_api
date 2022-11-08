@@ -6,7 +6,7 @@ class ProductSerializer < ActiveModel::Serializer
     # has_many :sub_categories, serializer: SubCategorySerializer
 
     def image
-      rails_blob_path(object.image) if object.image.attachment
+      url_for(object.image) if object.image.attachment
     end
   end
   

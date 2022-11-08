@@ -5,6 +5,6 @@ class CategorySerializer < ActiveModel::Serializer
   has_many :sub_categories, serializer: SubCategorySerializer
 
   def logo
-    rails_blob_path(object.logo) if object.logo.attachment
+    url_for(object.logo) if object.logo.attachment
   end
 end
