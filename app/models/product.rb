@@ -1,7 +1,6 @@
 class Product < ApplicationRecord
     has_one_attached :image
-    after_create :old_price_count
-    after_create :exclusive_price_count
+    before_validation :set_calculated_values
     belongs_to :category
     belongs_to :sub_category
 
@@ -16,19 +15,27 @@ class Product < ApplicationRecord
     validates :category_id, presence: { message: "Category can't be blank" }
     validates :sub_category_id, presence: { message: "SubCategory can't be blank" }
 
-    def old_price_count
-        percent  = 15
-        product = self
-        result = price * percent / 100
-        old_price = price + result
-        product.update(old_price: old_price)
+    private
+
+    def set_calculated_values
+        old_price_calculation()
+        exclusive_price_calculation()
+        set_category_id()
     end
 
-    def exclusive_price_count
-        percent  = 10
-        product = self
-        result = price * percent / 100
+    def old_price_calculation
+        result = price * 15 / 100
+        old_price = price + result
+        self.old_price = old_price
+    end
+
+    def exclusive_price_calculation
+        result = price * 10 / 100
         exclusive_price = price - result
-        product.update(exclusive_price: exclusive_price)
+        self.exclusive_price = exclusive_price
+    end
+
+    def set_category_id
+        self.category_id = self.sub_category.category_id
     end
 end
