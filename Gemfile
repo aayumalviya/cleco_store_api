@@ -63,3 +63,6 @@ gem 'pundit'
 gem 'active_model_serializers'
 # gem "aws-sdk-s3", require: false
 gem 'will_paginate', '~> 3.3'
+gem 'ransack'
+gem "activeadmin_addons"
+gem 'activeadmin_quill_editor'

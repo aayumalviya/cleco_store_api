@@ -96,6 +96,7 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+  # config.assets.precompile += %w(ckeditor/* ckeditor/init.js)
   # config.active_storage.service = :amazon
 
   # Inserts middleware to perform automatic connection switching.

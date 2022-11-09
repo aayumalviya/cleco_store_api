@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  valid_from: 
+  valid_to: 
+  is_active: false
+
+two:
+  title: MyString
+  valid_from: 
+  valid_to: 
+  is_active: false

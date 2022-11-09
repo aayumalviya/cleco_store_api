@@ -7,7 +7,15 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
+// import 'select2'
+// import 'select2/dist/css/select2.css'
 
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+
+// window.addEventListener('DOMContentLoaded', () => {
+//     $('.js-states').select2()
+//   })
+

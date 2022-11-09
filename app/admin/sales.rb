@@ -1,16 +1,16 @@
-ActiveAdmin.register SubCategory do
+ActiveAdmin.register Sale do
 
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :name, :logo, :category_id
+  permit_params :title, :valid_from, :valid_to, :is_active
   #
   # or
   #
   # permit_params do
-  #   permitted = [:name, :logo, :category_id]
+  #   permitted = [:title, :valid_from, :valid_to, :is_active, :boolean]
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
@@ -18,27 +18,29 @@ ActiveAdmin.register SubCategory do
   index do
     selectable_column
     id_column
-    column :name
-    column :logo
-    column :category
+    column :title
+    column :valid_from
+    column :valid_to
+    column :is_active
     actions
   end
 
-
   show do
     attributes_table do
-      row :name
-      row :logo do |category|
-        image_tag url_for(category&.logo), height: 200, width: 200 if category&.logo.attached?
-      end
+      row :title
+      row :valid_from
+      row :valid_to
+      row :is_active
     end
   end
 
+
   form do |f|
     f.inputs do
-      f.input :name
-      f.input :category_id, :as => :select, :collection => Category&.all.collect {|r| [r.name, r.id] }, include_blank: false
-      f.input :logo, as: :file
+      f.input :title
+      f.input :valid_from
+      f.input :valid_to
+      f.input :is_active
     end
     f.actions
   end

@@ -7,7 +7,7 @@ class ProductSerializer < ActiveModel::Serializer
     # has_many :categories, serializer: SubCategorySerializer
 
     def image
-      url_for(object.image) if object.image.attachment
+      url_for(object.image) if object&.image&.attachment
     end
   end
   
