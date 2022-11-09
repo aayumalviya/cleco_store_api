@@ -7,12 +7,15 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
+      devise_scope :user do
+        post 'sign_up', to: 'registrations#create'
+        post 'sign_in', to: 'sessions#create'
+        delete 'sign_out', to: 'sessions#destroy'
+      end
       resources :categories
       resources :sub_categories
       resources :products
-      #  do 
-      # end 
-   get 'filter', to: 'products#filter_products'
+    # get 'filter', to: 'products#filter_products'
     end
   end
 end
