@@ -5,6 +5,9 @@ class Product < ApplicationRecord
     belongs_to :sub_category
 
     has_many :product_sales, dependent: :destroy
+    has_many :product_media_files, dependent: :destroy
+    accepts_nested_attributes_for :product_media_files
+    
     has_many :sales, through: :product_sales, dependent: :destroy
 
     attr_accessor :sale

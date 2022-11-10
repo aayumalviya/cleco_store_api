@@ -7,8 +7,8 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
-// import 'select2'
-// import 'select2/dist/css/select2.css'
+require("jquery")
+import "cocoon";
 
 Rails.start()
 Turbolinks.start()

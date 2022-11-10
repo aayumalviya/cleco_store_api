@@ -1,2 +1,0 @@
-class ProductMedium < ApplicationRecord
-end

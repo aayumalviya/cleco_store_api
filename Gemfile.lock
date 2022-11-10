@@ -112,6 +112,7 @@ GEM
     case_transform (0.2)
       activesupport
     childprocess (4.1.0)
+    cocoon (1.2.15)
     concurrent-ruby (1.1.10)
     crass (1.0.6)
     devise (4.8.1)
@@ -311,9 +312,11 @@ DEPENDENCIES
   byebug
   cancancan
   capybara (>= 3.26)
+  cocoon
   devise
   draper
   jbuilder (~> 2.7)
+  jquery-rails
   listen (~> 3.3)
   pg
   puma (~> 5.0)
