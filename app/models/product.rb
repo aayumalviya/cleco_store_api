@@ -18,6 +18,11 @@ class Product < ApplicationRecord
     validates :category_id, presence: { message: "Category can't be blank" }
     validates :sub_category_id, presence: { message: "SubCategory can't be blank" }
 
+
+    def recommended_products
+        self.sub_category.products.where(is_recommended: true)
+    end
+
     private
 
     def set_calculated_values

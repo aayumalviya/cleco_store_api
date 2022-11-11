@@ -5,7 +5,7 @@ ActiveAdmin.register Product do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-   permit_params :title, :product_description, :price, :old_price, :exclusive_price, :image, :product_details, :category_id, :is_published, :sub_category_id, :sale, product_media_files_attributes: [:id, :images, :_destroy]
+   permit_params :title, :product_description, :price, :old_price, :exclusive_price, :image, :product_details, :category_id, :is_published, :sub_category_id, :sale, :is_recommended, product_media_files_attributes: [:id, :image, :_destroy]
   #
   # or
   #
@@ -35,14 +35,16 @@ ActiveAdmin.register Product do
       row :old_price
       row :old_price
       row :exclusive_price
-      row :product_description
-      row :product_details
+      row :product_description do |product|
+        raw product.product_description
+      end
+      row :product_details do |product|
+        raw product.product_details
+      end
       row :image do |product|
         image_tag url_for(product&.image), height: 200, width: 200 if product&.image.attached?
       end
-      row :images do |media_image|
-        image_tag url_for(media_image&.image), height: 200, width: 200 if product&.image.attached?
-      end
+      row :product_media_files
     end
   end
 
@@ -80,11 +82,15 @@ ActiveAdmin.register Product do
       # f.input :category_id, :as => :select, :collection => Category&.all.collect {|r| [r.name, r.id] }
       f.input :sub_category_id, :as => :select, :collection => SubCategory&.all.collect {|r| [r.name, r.id] }
       f.input :sale, :as => :select, :collection => Sale&.all.collect {|r| [r.title, r.id] }, multiple: false
+      # if f.object.persisted?
+      #   f.input :recommended_products, :as => :select, :collection => f.object.recommended_products.collect {|r| [r.title, r.id] }, multiple: true
+      # end
       f.input :product_details, as: :quill_editor#, input_html: { data: { options: { modules: { toolbar: [['bold', 'italic', 'underline'], ['link']] }, placeholder: 'Type something...', theme: 'snow' } } }
       f.input :product_description, as: :quill_editor#, input_html: { data: { options: { modules: { toolbar: [['bold', 'italic', 'underline'], ['link']] }, placeholder: 'Type something...', theme: 'snow' } } }
       f.input :is_published
+      f.input :is_recommended
       f.has_many :product_media_files do |c|
-        c.input :images, as: :file#,  :hint => c.template.image_tag(c.object.images.url(:thumb)) 
+        c.input :image, as: :file#,  :hint => c.template.image_tag(c.object.images.url(:thumb))
         c.input :_destroy, :as => :boolean
       end
     end

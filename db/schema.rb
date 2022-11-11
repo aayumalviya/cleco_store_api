@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_10_062522) do
+ActiveRecord::Schema.define(version: 2022_11_10_124827) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,9 +19,9 @@ ActiveRecord::Schema.define(version: 2022_11_10_062522) do
     t.string "namespace"
     t.text "body"
     t.string "resource_type"
-    t.integer "resource_id"
+    t.bigint "resource_id"
     t.string "author_type"
-    t.integer "author_id"
+    t.bigint "author_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["author_type", "author_id"], name: "index_active_admin_comments_on_author"
@@ -91,6 +91,7 @@ ActiveRecord::Schema.define(version: 2022_11_10_062522) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "product_id"
+    t.string "image"
   end
 
   create_table "product_sales", force: :cascade do |t|
@@ -113,6 +114,7 @@ ActiveRecord::Schema.define(version: 2022_11_10_062522) do
     t.integer "category_id"
     t.boolean "is_published", default: false
     t.integer "sub_category_id"
+    t.boolean "is_recommended", default: false
   end
 
   create_table "sales", force: :cascade do |t|
