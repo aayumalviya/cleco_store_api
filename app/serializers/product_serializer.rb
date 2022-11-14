@@ -23,17 +23,12 @@ class ProductSerializer < ActiveModel::Serializer
           exclusive_price: product.exclusive_price,
           thumbnail: object&.image&.attached? ? url_for(object.image) : nil,
           product_details: product.product_details ,
-          is_published: product.is_published
+          is_published: product.is_published,
+          category: ActiveModelSerializers::SerializableResource.new(product.category, serializer: CategorySerializer),
+          sub_category: ActiveModelSerializers::SerializableResource.new(product.sub_category, serializer: SubCategorySerializer)
         }
       end
       array
     end
-
-    def images
-      #object.product_media_files.each do  |product_media_file|
-        #url_for(product_media_file.image) if product_media_file&.image&.attached?
-      #end
-    end
-
 end
   
