@@ -5,7 +5,7 @@ ActiveAdmin.register Option do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  # permit_params :title
+   permit_params :title, :short_name
   #
   # or
   #
