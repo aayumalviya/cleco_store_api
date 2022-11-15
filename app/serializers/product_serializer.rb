@@ -1,14 +1,14 @@
 class ProductSerializer < ActiveModel::Serializer
   include Rails.application.routes.url_helpers
 
-    attributes :id, :title, :product_description, :price, :old_price, :exclusive_price, :thumbnail, :product_details, :is_published, :recommondation, :options
+    attributes :id, :title, :product_description, :price, :old_price, :exclusive_price, :thumbnail, :product_details, :is_published, :recommondation, :options, :quantity
   
     belongs_to :category, serializer: CategorySerializer
     belongs_to :sub_category, serializer: SubCategorySerializer
     has_many :product_media_files, each_serializer: ProductMediaFileSerializer
 
     def thumbnail
-       url_for(object.image) if object&.image&.attachment
+      url_for(object.image) if object&.image&.attachment
     end
 
     def recommondation
@@ -33,6 +33,10 @@ class ProductSerializer < ActiveModel::Serializer
 
     def options
       object.options.pluck(:short_name)
+    end
+
+    def quantity
+      object.quantity.to_i
     end
 end
   

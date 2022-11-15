@@ -1,4 +1,4 @@
-class Api::V1::ProductsController < ApplicationController
+class Api::V1::ProductsController <  Api::BaseController
 
   def index
     if params[:category_ids]
@@ -36,6 +36,7 @@ class Api::V1::ProductsController < ApplicationController
         type: 'Unprocessable Entity'
       }
     end
-
   end
+
+
 end

@@ -5,7 +5,6 @@ ActiveAdmin.register Product do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-   permit_params :title, :product_description, :price, :old_price, :exclusive_price, :image, :product_details, :category_id, :is_published, :sub_category_id, :sale, :is_recommended, product_media_files_attributes: [:id, :image, :_destroy]
   #
   # or
   #
@@ -35,6 +34,7 @@ ActiveAdmin.register Product do
       row :old_price
       row :old_price
       row :exclusive_price
+      row :quantity
       row :product_description do |product|
         raw product.product_description
       end
@@ -89,7 +89,7 @@ ActiveAdmin.register Product do
       #   f.input :recommended_products, :as => :select, :collection => f.object.recommended_products.collect {|r| [r.title, r.id] }, multiple: true
       # end
       f.input :options, input_html: { class: "select2" }, :collection => Option.all.collect {|r| [r.title, r.id] }, include_blank: false, multiple: true
-
+      f.input :quantity
       f.input :product_details #, input_html: { data: { options: { modules: { toolbar: [['bold', 'italic', 'underline'], ['link']] }, placeholder: 'Type something...', theme: 'snow' } } }
       f.input :product_description #, input_html: { data: { options: { modules: { toolbar: [['bold', 'italic', 'underline'], ['link']] }, placeholder: 'Type something...', theme: 'snow' } } }
       f.input :is_published
@@ -135,7 +135,7 @@ ActiveAdmin.register Product do
     private
 
     def product_params
-      params.require(:product).permit(:title, :product_description, :price, :old_price, :exclusive_price, :image, :product_details, :category_id, :is_published, :sub_category_id, :sale, :is_recommended, product_media_files_attributes: [:id, :image, :_destroy])
+      params.require(:product).permit(:title, :product_description, :price, :old_price, :exclusive_price, :image, :product_details, :category_id, :is_published, :sub_category_id, :sale, :is_recommended, :quantity, product_media_files_attributes: [:id, :image, :_destroy])
     end
   end
 end

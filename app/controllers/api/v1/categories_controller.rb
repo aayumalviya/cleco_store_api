@@ -1,21 +1,21 @@
-class Api::V1::CategoriesController < ApplicationController
-    protect_from_forgery with: :null_session
+class Api::V1::CategoriesController <  Api::BaseController
+
     # before_action do
     #     ActiveStorage::Current.host = request.base_url
     # end
 
-    def index
-        @categories = Category.all
-        render json: {
-            categories: ActiveModelSerializers::SerializableResource.new(@categories, each_serializer: CategorySerializer),
-            message: 'Category list fetched successfully',
-            status: 200,
-            type: 'Success'
+  def index
+    @categories = Category.all
+    render json: {
+          categories: ActiveModelSerializers::SerializableResource.new(@categories, each_serializer: CategorySerializer),
+          message: 'Category list fetched successfully',
+          status: 200,
+          type: 'Success'
         }
-    end
+  end
 
-    private
+  private
     def category_params
-        params.require(:category).permit(:name, :logo)
+      arams.require(:category).permit(:name, :logo)
     end
 end
