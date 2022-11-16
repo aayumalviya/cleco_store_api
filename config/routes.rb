@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  #default_url_options :host => "cleco-store.herokuapp.com"
+  default_url_options :host => "cleco-store.herokuapp.com"
   devise_for :admin_users, ActiveAdmin::Devise.config
   devise_for :users
   ActiveAdmin.routes(self)
@@ -18,6 +18,7 @@ Rails.application.routes.draw do
         resources :cart_items
         collection do
           get 'new_arrivals'
+          get 'top_sellings'
         end
       end
       resources :orders
