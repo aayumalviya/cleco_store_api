@@ -16,6 +16,9 @@ Rails.application.routes.draw do
       resources :sub_categories
       resources :products do
         resources :cart_items
+        collection do
+          get 'new_arrivals'
+        end
       end
       resources :orders
 

@@ -30,12 +30,22 @@ class Api::V1::ProductsController <  Api::BaseController
         }
     else
       render json: {
-        Products: nil,
-        message: "Product not found",
-        status: 422,
-        type: 'Unprocessable Entity'
+                  Products: nil,
+                  message: "Product not found",
+                  status: 422,
+                  type: 'Unprocessable Entity'
       }
     end
+  end
+
+  def new_arrivals
+    @products = Product.where("created_at >= ?", Date.today-2.weeks)
+    render json: {
+                Products: ActiveModelSerializers::SerializableResource.new(@products, each_serializer: ProductSerializer),
+                message: 'Products list fetched successfully',
+                status: 200,
+                type: 'Success'
+      }
   end
 
 
