@@ -10,7 +10,7 @@ class Api::V1::ProductsController <  Api::BaseController
     else
       @products = Product.all
     end
-    @products = @products&.paginate(page: params[:page], per_page: 2).order('created_at desc')
+    @products = @products&.paginate(page: params[:page], per_page: 10).order('created_at desc')
       render json: {
                 Products: ActiveModelSerializers::SerializableResource.new(@products, each_serializer: ProductSerializer),
                 message: 'Products list fetched successfully',
@@ -48,5 +48,14 @@ class Api::V1::ProductsController <  Api::BaseController
       }
   end
 
-
+  def top_sellings
+    @products = Product.joins("INNER JOIN order_products ON order_products.product_id = products.id").group("products.id").order("COUNT(order_products.id) DESC")
+    render json: {
+                Products: ActiveModelSerializers::SerializableResource.new(@products, each_serializer: ProductSerializer),
+                message: 'Products list fetched successfully',
+                status: 200,
+                type: 'Success'
+      }
+  end
 end
+
