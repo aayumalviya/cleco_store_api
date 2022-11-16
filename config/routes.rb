@@ -17,6 +17,7 @@ Rails.application.routes.draw do
       resources :products do
         resources :cart_items
       end
+      resources :orders
 
     # get 'filter', to: 'products#filter_products'
     end
