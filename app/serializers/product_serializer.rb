@@ -8,7 +8,8 @@ class ProductSerializer < ActiveModel::Serializer
     has_many :product_media_files, each_serializer: ProductMediaFileSerializer
 
     def thumbnail
-      url_for(object.image) if object&.image&.attachment
+      #url_for(object.image) if object&.image&.attachment
+      "https://i.pinimg.com/originals/a3/6b/42/a36b422bb2bebcbd77bba846b83ddf5d.png"
     end
 
     def recommondation
@@ -21,7 +22,8 @@ class ProductSerializer < ActiveModel::Serializer
           price: product.price ,
           old_price: product.old_price,
           exclusive_price: product.exclusive_price,
-          thumbnail: object&.image&.attached? ? url_for(object.image) : nil,
+          # thumbnail: object&.image&.attached? ? url_for(object.image) : nil,
+          thumbnail: "https://i.pinimg.com/originals/a3/6b/42/a36b422bb2bebcbd77bba846b83ddf5d.png",
           product_details: product.product_details ,
           is_published: product.is_published,
           category: ActiveModelSerializers::SerializableResource.new(product.category, serializer: CategorySerializer),
