@@ -9,7 +9,7 @@ class ProductSerializer < ActiveModel::Serializer
 
     def thumbnail
       #url_for(object.image) if object&.image&.attachment
-      "https://i.pinimg.com/originals/a3/6b/42/a36b422bb2bebcbd77bba846b83ddf5d.png"
+      "https://prod-img.thesouledstore.com/public/theSoul/uploads/catalog/product/1665405926_6980127.jpg?format=webp&w=480&dpr=1.0"
     end
 
     def recommondation

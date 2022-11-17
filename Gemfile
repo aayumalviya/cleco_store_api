@@ -68,3 +68,4 @@ gem "activeadmin_addons"
 gem 'activeadmin_quill_editor'
 gem 'jquery-rails'
 gem 'cocoon'
+gem 'rack-cors'
