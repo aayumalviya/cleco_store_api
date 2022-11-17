@@ -23,7 +23,7 @@ class ProductSerializer < ActiveModel::Serializer
           old_price: product.old_price,
           exclusive_price: product.exclusive_price,
           # thumbnail: object&.image&.attached? ? url_for(object.image) : nil,
-          thumbnail: "https://i.pinimg.com/originals/a3/6b/42/a36b422bb2bebcbd77bba846b83ddf5d.png",
+          thumbnail: "https://prod-img.thesouledstore.com/public/theSoul/uploads/catalog/product/1665405926_6980127.jpg?format=webp&w=480&dpr=1.0",
           product_details: product.product_details ,
           is_published: product.is_published,
           category: ActiveModelSerializers::SerializableResource.new(product.category, serializer: CategorySerializer),
