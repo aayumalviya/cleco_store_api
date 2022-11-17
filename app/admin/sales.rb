@@ -38,8 +38,8 @@ ActiveAdmin.register Sale do
   form do |f|
     f.inputs do
       f.input :title
-      f.input :valid_from
-      f.input :valid_to
+      f.input :valid_from, as: :datetime_picker
+      f.input :valid_to, as: :datetime_picker
       f.input :is_active
     end
     f.actions

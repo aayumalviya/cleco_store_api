@@ -84,7 +84,7 @@ ActiveAdmin.register Product do
       f.input :image, as: :file
       # f.input :category_id, :as => :select, :collection => Category&.all.collect {|r| [r.name, r.id] }
       f.input :sub_category_id, :as => :select, :collection => SubCategory&.all.collect {|r| [r.name, r.id] }
-      f.input :sale, :as => :select, :collection => Sale&.all.collect {|r| [r.title, r.id] }, multiple: false
+      f.input :sale, :as => :select, :collection => Sale.active.collect {|r| [r.title, r.id] }, multiple: false
       # if f.object.persisted?
       #   f.input :recommended_products, :as => :select, :collection => f.object.recommended_products.collect {|r| [r.title, r.id] }, multiple: true
       # end
