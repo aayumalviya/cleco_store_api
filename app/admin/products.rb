@@ -13,6 +13,12 @@ ActiveAdmin.register Product do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
+  scope :all, default: true
+  scope("Published") { |scope| scope.where(is_published: true) }
+  scope("Notpublished") { |scope| scope.where(is_published: false) }
+
+
+
 
   index do
     selectable_column

@@ -15,6 +15,10 @@ ActiveAdmin.register Sale do
   #   permitted
   # end
 
+  scope :all, default: true
+  scope("Active") { |scope| scope.where(is_active: true) }
+  scope("Inactive") { |scope| scope.where(is_active: false) }
+
   index do
     selectable_column
     id_column
