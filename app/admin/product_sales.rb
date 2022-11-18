@@ -51,7 +51,7 @@ ActiveAdmin.register ProductSale do
 
   form do |f|
     f.inputs do
-      f.input :product, input_html: { class: "select2" }, :collection => Product.all.collect {|r| ["#{r.id} - #{r.title}"] }, include_blank: false, multiple: true
+      f.input :product, input_html: { class: "select2" }, :collection => Product.all.collect {|r| ["#{r.id} - #{r.title}", r.id] }, include_blank: false, multiple: true
       f.input :sale, input_html: { class: "select2" }, :collection => Sale.active.collect {|r| [r.title, r.id] }, include_blank: false, multiple: false
     end
     f.actions
