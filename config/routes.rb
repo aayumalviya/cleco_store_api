@@ -22,6 +22,7 @@ Rails.application.routes.draw do
         end
       end
       resources :orders
+      resources :delivery_addresses
 
     # get 'filter', to: 'products#filter_products'
     end
