@@ -9,7 +9,6 @@ class Api::V1::OrdersController <  Api::BaseController
           status: 200,
           type: 'Success'
         }
-
   end
 
   def create
@@ -18,7 +17,7 @@ class Api::V1::OrdersController <  Api::BaseController
       if @order.save
         current_user.cart_items.each do |cart_item|
           product = cart_item.product
-          if product.quantity.to_i > 0
+          if product.quantity.to_i > 0 && product.quantity.to_i >= cart_item.quantity.to_i
             OrderProduct.create(product_id: cart_item.product_id , order_id: @order.id)
             product.quantity = product.quantity - cart_item.quantity
             product.save
@@ -55,7 +54,7 @@ class Api::V1::OrdersController <  Api::BaseController
     if @order.present?
       render json: {
                   order: ActiveModelSerializers::SerializableResource.new(@order, serializer: OrderSerializer),
-                  message: 'Oredr details  fetched successfully',
+                  message: 'Order details  fetched successfully',
                   status: 200,
                   type: 'Success'
                 }
@@ -68,6 +67,5 @@ class Api::V1::OrdersController <  Api::BaseController
                 }
     end
   end
-
 
 end
