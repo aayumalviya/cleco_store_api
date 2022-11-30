@@ -39,7 +39,7 @@ class Api::V1::ProductsController <  Api::BaseController
   end
 
   def new_arrivals
-    @products = Product.where("created_at >= ?", Date.today-2.weeks)
+    @products = Product.where("created_at >= ?", Date.today-4.weeks)
       render json: {
                 Products: ActiveModelSerializers::SerializableResource.new(@products, each_serializer: ProductSerializer),
                 message: 'Products list fetched successfully',
