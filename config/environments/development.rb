@@ -14,6 +14,7 @@ Rails.application.configure do
   # Show full error reports.
   config.consider_all_requests_local = true
 
+  config.hosts << "287a-223-236-4-45.in.ngrok.io"
   # Enable/disable caching. By default caching is disabled.
   # Run rails dev:cache to toggle caching.
   if Rails.root.join('tmp', 'caching-dev.txt').exist?
@@ -75,8 +76,8 @@ Rails.application.configure do
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
 
-  config.action_mailer.default_url_options = { host: 'cleco-store.herokuapp', port: 3000 }
-  Rails.application.routes.default_url_options[:host] = 'cleco-store.herokuapp'
+  config.action_mailer.default_url_options = { host: 'localhost:3000', port: 3000 }
+  Rails.application.routes.default_url_options[:host] = 'localhost:3000'
   Rails.application.config_for(:storage)
 
 end

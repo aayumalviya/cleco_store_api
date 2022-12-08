@@ -14,7 +14,6 @@ class Api::V1::CartItemsController < Api::BaseController
 
   def create
     @cart_item = current_user.cart_items.new(cart_item_params)
-    @cart_item.product_id =  params[:product_id]
     if @cart_item.save
       render json: {
                   cart_item: ActiveModelSerializers::SerializableResource.new(@cart_item, serializer: CartItemSerializer),
@@ -54,6 +53,6 @@ class Api::V1::CartItemsController < Api::BaseController
 
   private
     def cart_item_params
-      params.require(:cart_item).permit(:quantity)
+      params.require(:cart_item).permit(:quantity, :product_id)
     end
 end
