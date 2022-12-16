@@ -38,7 +38,6 @@ ActiveAdmin.register Product do
       row :title
       row :price
       row :old_price
-      row :old_price
       row :exclusive_price
       row :quantity
       row :product_description do |product|

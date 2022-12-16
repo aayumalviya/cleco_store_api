@@ -1,3 +1,4 @@
 class UserSerializer < ActiveModel::Serializer
-    attributes :id, :first_name, :last_name, :email, :phone_number, :authentication_token
+  has_many :delivery_addresses, serializer: DeliveryAddressesSerializer
+  attributes :id, :first_name, :last_name, :email, :phone_number, :authentication_token
 end

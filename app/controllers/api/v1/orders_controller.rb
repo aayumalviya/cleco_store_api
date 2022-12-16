@@ -15,18 +15,34 @@ class Api::V1::OrdersController <  Api::BaseController
     if current_user.cart_items.present?
       @order = current_user.orders.new(uuid: SecureRandom.uuid)
       if @order.save
+        @total_price = 0
         current_user.cart_items.each do |cart_item|
           product = cart_item.product
           if product.quantity.to_i > 0 && product.quantity.to_i >= cart_item.quantity.to_i
             OrderProduct.create(product_id: cart_item.product_id , order_id: @order.id)
             product.quantity = product.quantity - cart_item.quantity
             product.save
+            @total_price += product.price
           end
         end
+        if params[:code]
+          @coupon = Coupon.find_by(code: params[:code])
+          if @coupon
+            cr = CouponRedemption.new(coupon_id: @coupon.id, user_id: current_user.id)
+            if cr.save
+              discount_amount = @coupon.discount_amount
+              @total_price -= discount_amount
+              @coupon.total_redeem -= 1
+              @coupon.save
+            end
+          end
+        end
+        @order.update(total_amount: @total_price)
         current_user.cart_items.destroy_all
+        @order.notifications.create(title: "your order has been placed successfully", user_id: current_user.id)
         render json: {
                     order: ActiveModelSerializers::SerializableResource.new(@order, serializer: OrderSerializer),
-                    message: 'Cart created successfully',
+                    message: 'Order created successfully',
                     status: 200,
                     type: 'Success'
                   }

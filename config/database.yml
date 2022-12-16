@@ -9,3 +9,7 @@ default: &default
 development:
   <<: *default
   database: cleco_store_development
+
+production:
+  <<: *default
+  database: cleco_store_prod

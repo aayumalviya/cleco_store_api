@@ -24,6 +24,9 @@ Rails.application.routes.draw do
       resources :wish_lists
       resources :orders
       resources :delivery_addresses
+      resources :notifications
+      get 'user_profile', to: 'users#user_profile'
+
 
     # get 'filter', to: 'products#filter_products'
     end

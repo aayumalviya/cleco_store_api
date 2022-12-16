@@ -2,6 +2,7 @@ class Api::V1::WishListsController < Api::BaseController
   before_action :find_current_user
   def index
     @wish_lists = current_user.wish_lists
+    @wish_lists = @wish_lists&.paginate(:page => params[:page], :per_page => 1)
     render json: {
           wish_lists: ActiveModelSerializers::SerializableResource.new(@wish_lists, each_serializer: WishListSerializer),
           message: 'Wish list fetched successfully',
@@ -30,7 +31,7 @@ class Api::V1::WishListsController < Api::BaseController
   end
 
   def destroy
-    @wish_list = WishList.find_by(id: params[:id])
+    @wish_list = current_user.wish_lists.find_by(product_id: params[:id])
     if @wish_list&.destroy
       render json: {
                   wish_list: ActiveModelSerializers::SerializableResource.new(@wish_list, serializer: WishListSerializer),

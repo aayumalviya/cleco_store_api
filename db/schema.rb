@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_12_01_121016) do
+ActiveRecord::Schema.define(version: 2022_12_16_060357) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -84,6 +84,22 @@ ActiveRecord::Schema.define(version: 2022_12_01_121016) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "coupon_redemptions", force: :cascade do |t|
+    t.integer "coupon_id"
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "coupons", force: :cascade do |t|
+    t.string "code"
+    t.float "discount_amount"
+    t.datetime "expiration_date"
+    t.integer "total_redeem"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "delivery_addresses", force: :cascade do |t|
     t.string "name"
     t.string "mobile_number"
@@ -98,6 +114,17 @@ ActiveRecord::Schema.define(version: 2022_12_01_121016) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.string "title"
+    t.boolean "user_checked", default: false
+    t.integer "user_id"
+    t.string "notifiable_type", null: false
+    t.bigint "notifiable_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["notifiable_type", "notifiable_id"], name: "index_notifications_on_notifiable"
   end
 
   create_table "options", force: :cascade do |t|
@@ -119,6 +146,7 @@ ActiveRecord::Schema.define(version: 2022_12_01_121016) do
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.float "total_amount"
   end
 
   create_table "product_media", force: :cascade do |t|
