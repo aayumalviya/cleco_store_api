@@ -26,7 +26,7 @@ set :deploy_via,      :remote_cache
 # set :rvm_type, :user                     # Defaults to: :auto
 # set :rvm_ruby_version, 'ruby-3.0.2'      # Defaults to: 'default'
 
-set :deploy_to, '/apps/cleco_store'
+set :deploy_to, '/home/deploy/apps/clecostore'
 # set :puma_bind,       "unix://#{shared_path}/tmp/sockets/puma.sock"
 # set :puma_state,      "#{shared_path}/tmp/pids/puma.state"
 # set :puma_pid,        "#{shared_path}/tmp/pids/puma.pid"
@@ -37,10 +37,8 @@ set :deploy_to, '/apps/cleco_store'
 # set :puma_worker_timeout, nil
 # set :puma_init_active_record, false  # Change to true if using ActiveRecord
 
-set :linked_files, %w{config/database.yml config/sidekiq.yml config/production.key}
+set :linked_files, %w{config/database.yml config/sidekiq.yml}
 set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
-
-# set :linked_files, %w{config/production.key}
 
 set :keep_releases, 6
 
