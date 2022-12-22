@@ -51,7 +51,7 @@ class Api::V1::DeliveryAddressesController < Api::BaseController
 
   def destroy
     @delivery_address = DeliveryAddress.find_by(id: params[:id])
-    if @delivery_address.destroy
+    if @delivery_address&.destroy
       render json: {
                   delivery_address: ActiveModelSerializers::SerializableResource.new(@delivery_address, serializer: DeliveryAddressesSerializer),
                   message: 'Address deleted successfully',

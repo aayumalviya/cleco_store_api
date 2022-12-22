@@ -12,28 +12,32 @@
 
 
 
-# categories = ['mens', 'women', 'kids']
-# categories.each do |category|
-#   Category.find_or_create_by(name: category)
-# end
+categories = ['mens', 'women', 'kids']
+categories.each do |category|
+  category = Category.find_or_create_by(name: category)
+	category.logo.attach(io: File.open("#{Rails.root.to_path}/public/#{categories}_category.jpg"), filename: 'ethnicwear.jpg')
+end
 
-# mens_sub_categories = ['t-shirt', 'kurta', 'Hoodies']
-# women_sub_categories = ['saree', 'suits']
-# kids_sub_categories = ['jacket', 'blazzer']
+mens_sub_categories = ['t-shirt', 'kurta', 'Hoodies']
+women_sub_categories = ['saree', 'suits']
+kids_sub_categories = ['jacket', 'blazzer']
 
-# category = Category.find_by(name: 'mens')
-# mens_sub_categories.each do |sub_category|
-#   category.sub_categories.find_or_create_by(name: sub_category)
-# end
+category = Category.find_by(name: 'mens')
+mens_sub_categories.each do |sub_category|
+  sub_category = category.sub_categories.find_or_create_by(name: sub_category)
+  sub_category.logo.attach(io: File.open("#{Rails.root.to_path}/public/#{sub_category}_sub_category.jpg"), filename: 'ethnicwear.jpg')
+end
 
 # category = Category.find_by(name: 'women')
 # women_sub_categories.each do |sub_category|
-#   category.sub_categories.find_or_create_by(name: sub_category)
+#   sub_category = category.sub_categories.find_or_create_by(name: sub_category)
+    sub_category.logo.attach(io: File.open("#{Rails.root.to_path}/public/#{sub_category}_sub_category.jpg"), filename: 'ethnicwear.jpg')
 # end
 
 # category = Category.find_by(name: 'kids')
 # kids_sub_categories.each do |sub_category|
-#   category.sub_categories.find_or_create_by(name: sub_category)
+#   sub_category = category.sub_categories.find_or_create_by(name: sub_category)
+    sub_category.logo.attach(io: File.open("#{Rails.root.to_path}/public/#{sub_category}_sub_category.jpg"), filename: 'ethnicwear.jpg')
 # end
 
 # products = [

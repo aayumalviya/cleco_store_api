@@ -28,7 +28,7 @@ class Api::V1::ProductsController <  Api::BaseController
     if params[:q]
       @products = @products&.where('lower(title) like ?', "%#{params[:q].downcase}%")
     end
-    @products = @products&.paginate(:page => params[:page], :per_page => 10)
+    @products = @products&.paginate(:page => params[:page], :per_page => 3)
       render json: {
                 Products: ActiveModelSerializers::SerializableResource.new(@products, each_serializer: ProductSerializer),
                 message: 'Products list fetched successfully',

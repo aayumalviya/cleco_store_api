@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  code: MyString
+  discount_amount: 1.5
+  expiration_date: 2022-12-15 13:20:52
+  total_redeem: 1
+
+two:
+  code: MyString
+  discount_amount: 1.5
+  expiration_date: 2022-12-15 13:20:52
+  total_redeem: 1

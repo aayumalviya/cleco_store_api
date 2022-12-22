@@ -8,15 +8,14 @@
   
     def create
       if @user.valid_password?(sign_in_params[:password])
-        login = @user.user_logins.find_by(device_id: sign_in_params[:device_id], ip_address: sign_in_params[:ip_address])
         if @user.user_logins.blank?
-            @user.update(authentication_token: SecureRandom.base64(10))
+          @user.update(authentication_token: SecureRandom.base64(10))
         end
-
+        login = @user.user_logins.find_by(device_id: sign_in_params[:device_id], ip_address: sign_in_params[:ip_address])
         if login.present?
-           login.update(fcm_token: sign_in_params[:fcm_token])
+          login.update(fcm_token: sign_in_params[:fcm_token])
         else
-            @user.user_logins.create(device_id: sign_in_params[:device_id], ip_address: sign_in_params[:ip_address], fcm_token: sign_in_params[:fcm_token])
+          @user.user_logins.create(device_id: sign_in_params[:device_id], ip_address: sign_in_params[:ip_address], fcm_token: sign_in_params[:fcm_token])
         end
 
         sign_in 'user', @user
@@ -34,10 +33,10 @@
     def destroy
       @user = User.find_by(email: params[:user][:email])
       if @user.present?
-         login = @user.user_logins.find_by(device_id:  sign_in_params[:device_id], ip_address:  sign_in_params[:ip_address])
-         login&.destroy
-         logins = @user.user_logins.reload
-         @user.update(authentication_token: nil) if logins.blank?
+        login = @user.user_logins.find_by(device_id:  sign_in_params[:device_id], ip_address:  sign_in_params[:ip_address])
+        login&.destroy
+        logins = @user.user_logins.reload
+        @user.update(authentication_token: nil) if logins.blank?
         log_out_success
       else
         log_out_failure
