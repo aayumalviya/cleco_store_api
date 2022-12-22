@@ -3,9 +3,9 @@ default: &default
   encoding: unicode
   host: localhost
   username: postgres
-  password: deploy1234
+  password: postgres
   pool: 5
 
-production:
+development:
   <<: *default
-  database: cleco_store_prod
+  database: cleco_store_development

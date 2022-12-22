@@ -2,7 +2,7 @@ class Api::V1::CartItemsController < Api::BaseController
   before_action :find_current_user
   def index
     @cart_items = current_user.cart_items
-    @cart_items = @cart_items&.paginate(:page => params[:page], :per_page => 1)
+    @cart_items = @cart_items&.paginate(:page => params[:page], :per_page => 1) if params[:page].present?
     render json: {
           cart_items: ActiveModelSerializers::SerializableResource.new(@cart_items, each_serializer: CartItemSerializer),
           message: 'Cart list fetched successfully',
