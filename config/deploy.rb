@@ -38,7 +38,7 @@ set :deploy_to, '/home/deploy/apps/clecostore'
 # set :puma_worker_timeout, nil
 # set :puma_init_active_record, false  # Change to true if using ActiveRecord
 
-set :linked_files, %w{config/database.yml config/sidekiq.yml config/production.key}
+set :linked_files, %w{config/database.yml config/sidekiq.yml config/production.key config/master.key}
 set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 
 set :keep_releases, 6
