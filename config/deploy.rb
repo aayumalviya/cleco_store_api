@@ -24,7 +24,7 @@ set :production,      :production
 set :deploy_via,      :remote_cache
 
 set :rvm_type, :user                     # Defaults to: :auto
-set :rvm_ruby_version, 'ruby-3.0.1'      # Defaults to: 'default'
+set :rvm_ruby_version, 'ruby-3.0.0'      # Defaults to: 'default'
 set :default_env, { rvm_bin_path: "~/.rvm/bin" }
 
 set :deploy_to, '/home/deploy/apps/clecostore'
