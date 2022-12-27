@@ -1,6 +1,6 @@
 # config valid for current version and patch releases of Capistrano
 lock "~> 3.17.1"
-server "3.217.135.81", user: "ubuntu", roles: %w{app db web}
+server "3.217.135.81", user: "deploy", roles: %w{app db web}
 
 set :application, 'cleco_store'
 set :pty, false
@@ -11,7 +11,7 @@ set :branch, ENV['BRANCH'] || "main"
 
 # Default deploy_to directory is /var/www/my_app_name
 
-set :user, "ubuntu"
+set :user, "deploy"
 
 append :linked_dirs, '.bundle' # added after rails 6
 
@@ -24,10 +24,10 @@ set :production,      :production
 set :deploy_via,      :remote_cache
 
 set :rvm_type, :user                     # Defaults to: :auto
-set :rvm_ruby_version, 'ruby-3.0.2'      # Defaults to: 'default'
+set :rvm_ruby_version, 'ruby-3.0.1'      # Defaults to: 'default'
 # set :default_env, { rvm_bin_path: "~/.rvm/bin" }
 
-set :deploy_to, '/home/ubuntu/apps/clecostore'
+set :deploy_to, '/home/deploy/apps/clecostore'
 # set :puma_bind,       "unix://#{shared_path}/tmp/sockets/puma.sock"
 # set :puma_state,      "#{shared_path}/tmp/pids/puma.state"
 # set :puma_pid,        "#{shared_path}/tmp/pids/puma.pid"

@@ -2,9 +2,9 @@
 # ======================
 # Defines a single server with a list of roles and multiple properties.
 # You can define all roles on a single server, or split them:
-server '3.217.135.81', user: 'ubuntu', roles: %w{app db web}, my_property: :my_value
-server '3.217.135.81', user: 'ubuntu', roles: %w{app web}, other_property: :other_value
-server '3.217.135.81', user: 'ubuntu', roles: %w{db}
+server '3.217.135.81', user: 'deploy', roles: %w{app db web}, my_property: :my_value
+server '3.217.135.81', user: 'deploy', roles: %w{app web}, other_property: :other_value
+server '3.217.135.81', user: 'deploy', roles: %w{db}
 # Configuration
 # =============
 # You can set any configuration variable like in config/deploy.rb
@@ -21,10 +21,10 @@ server '3.217.135.81', user: 'ubuntu', roles: %w{db}
 # Global options
 # --------------
 server '3.217.135.81',
-       user: 'ubuntu',
+       user: 'deploy',
        roles: %w{web app},
        ssh_options: {
-           user: 'ubuntu', # overrides user setting above
+           user: 'deploy', # overrides user setting above
            keys: %w(~/.ssh/id_rsa),
            forward_agent: true,
            auth_methods: %w(publickey)
