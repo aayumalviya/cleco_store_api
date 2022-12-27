@@ -1,5 +1,6 @@
 
 # Change these
+lock "~> 3.17.1"
 server "3.217.135.81", user: "deploy", roles: %w{app db web}, primary: true
 
 set :repo_url,        "git@github.com:aayumalviya/cleco_store_api.git"
