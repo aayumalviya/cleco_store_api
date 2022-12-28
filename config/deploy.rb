@@ -3,7 +3,7 @@ lock "~> 3.17.1"
 server '3.217.135.81', user: 'deploy', roles: %w{app db web}
 
 set :application, 'clecostore'
-set :pty, false
+set :pty, true
 set :repo_url, "git@github.com:aayumalviya/cleco_store_api.git"
 # Default branch is :master
 #ask :branch, git rev-parse --abbrev-ref HEAD.chomp
