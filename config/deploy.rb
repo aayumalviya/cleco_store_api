@@ -4,6 +4,7 @@ server '3.217.135.81', user: 'deploy', roles: %w{app db web}
 
 set :application, 'clecostore'
 set :pty, true
+set :use_sudo, false
 set :repo_url, "git@github.com:aayumalviya/cleco_store_api.git"
 # Default branch is :master
 #ask :branch, git rev-parse --abbrev-ref HEAD.chomp
@@ -19,7 +20,6 @@ append :linked_dirs, '.bundle' # added after rails 6
 # set :puma_workers,    0
 
 # Don't change these unless you know what you're doing
-set :use_sudo,        false
 set :production,      :production
 set :deploy_via,      :remote_cache
 
