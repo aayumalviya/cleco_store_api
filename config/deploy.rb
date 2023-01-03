@@ -43,7 +43,7 @@ set :linked_dirs, %w{log tmp/pids tmp/cache public/uploads}
 # set :linked_files, %w{config/production.key}
 
 set :keep_releases, 6
-
+set :puma_enable_socket_service, true
 # Default branch is :master
 # ask :branch, git rev-parse --abbrev-ref HEAD.chomp
 
