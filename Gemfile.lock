@@ -115,10 +115,10 @@ GEM
     capistrano-rvm (0.1.2)
       capistrano (~> 3.0)
       sshkit (~> 1.2)
-    capistrano3-puma (5.2.0)
+    capistrano3-puma (3.1.1)
       capistrano (~> 3.7)
       capistrano-bundler
-      puma (>= 4.0, < 6.0)
+      puma (~> 3.4)
     capybara (3.38.0)
       addressable
       matrix
@@ -147,7 +147,7 @@ GEM
       activesupport (>= 5.0)
       request_store (>= 1.0)
       ruby2_keywords
-    erubi (1.11.0)
+    erubi (1.12.0)
     ffi (1.15.5)
     formtastic (4.0.0)
       actionpack (>= 5.2.0)
@@ -199,9 +199,9 @@ GEM
     matrix (0.4.2)
     method_source (1.0.0)
     mini_mime (1.1.2)
-    minitest (5.16.3)
+    minitest (5.17.0)
     msgpack (1.6.0)
-    net-imap (0.3.3)
+    net-imap (0.3.4)
       date
       net-protocol
     net-pop (0.1.2)
@@ -219,12 +219,11 @@ GEM
     orm_adapter (0.5.0)
     pg (1.4.5)
     public_suffix (5.0.1)
-    puma (5.6.5)
-      nio4r (~> 2.0)
+    puma (3.12.6)
     pundit (2.3.0)
       activesupport (>= 3.0.0)
-    racc (1.6.1)
-    rack (2.2.4)
+    racc (1.6.2)
+    rack (2.2.5)
     rack-cors (1.1.1)
       rack (>= 2.0.0)
     rack-mini-profiler (2.3.4)
@@ -363,7 +362,7 @@ DEPENDENCIES
   jquery-rails
   listen (~> 3.3)
   pg
-  puma
+  puma (~> 3.11)
   pundit
   rack-cors
   rack-mini-profiler (~> 2.0)
@@ -383,4 +382,4 @@ RUBY VERSION
    ruby 3.0.1p64
 
 BUNDLED WITH
-   2.3.19
+   2.2.22
