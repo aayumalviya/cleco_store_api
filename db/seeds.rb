@@ -1,4 +1,4 @@
-AdminUser.create!(email: 'admincleco@example.com', password: 'password2', password_confirmation: 'password2')
+# AdminUser.create!(email: 'admin@example.com', password: 'password2', password_confirmation: 'password2')
 
 categories = ['mens', 'women', 'kids']
 categories.each do |cat|
